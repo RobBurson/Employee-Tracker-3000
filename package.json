@@ -6,6 +6,14 @@
   "scripts": {
     "test": "testit"
   },
-  "author": "",
-  "license": "MIT"
+  "author": "RobBurson",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobBurson/Employee-Tracker-3000.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RobBurson/Employee-Tracker-3000/issues"
+  },
+  "homepage": "https://github.com/RobBurson/Employee-Tracker-3000#readme"
 }
