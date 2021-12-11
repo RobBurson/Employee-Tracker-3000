@@ -1,5 +1,17 @@
 # Employee-Tracker-3000
 
+
+# Table of Contents
+
+  - [Description](#description)
+  - [Deployed Link](#deployed-link)
+  - [Video Link](#video-link)
+  - [User Story](#user-story)
+  - [Acceptance Criteria](#acceptance-criteria)
+  - [Demonstration Video (GIF)](#demonstration-video-gif)
+
+## Description
+
 This is a CLI app to view the information stored in a database. Often referred to as a CMS or **C**ontent **M**anagement **S**ystem, this application is a tenable solution for managing a companies employees and is made using Node.js, Inquirer and MySQL.
 
 ## Deployed Link
