@@ -22,7 +22,7 @@ VALUES
     ('Lawyer', 155000, 4);
 
 INSERT INTO Employee
-    (first_name, last_name, role_id, manager_id)
+    (first_name, last_name, r_id, m_id)
 VALUES
     ('Rob', 'Burson', 1, NULL),
     ('Hunter', 'Hughes', 2, 1),
