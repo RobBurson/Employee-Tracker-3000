@@ -1,0 +1,11 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "A CLI to manage a company's employee database using Node, Inquirer and MySQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "testit"
+  },
+  "author": "",
+  "license": "MIT"
+}
