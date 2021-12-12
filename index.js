@@ -306,3 +306,38 @@ function updateEmployeeRole() {
         throw err
     });
 }
+
+function deleteDepartment() {
+    connection.promise().query('SELECT * FROM Department')
+    .then((res) => {
+        // Department Array for Choice
+        return res[0].map(dep => {
+            return {
+            name: dep.name,
+            value: dep.id
+            }
+        })
+    })
+    .then((departments) => {
+        return inquirer.prompt([
+            {
+                type: 'list',
+                name: 'depId',
+                choices: departments,
+                message: 'Select Which Department You Wish to Delete.'
+            }
+        ])
+    })
+    .then(answer => {
+        console.log(answer);
+        return connection.promise().query('DELETE FROM Department WHERE id = ?', answer.depId);
+    })
+    .then(res => {
+        console.log(res);
+        console.log('Department Successfully Deleted!');
+        createList();
+    })
+    .catch(err => {
+        throw err
+    });
+}
