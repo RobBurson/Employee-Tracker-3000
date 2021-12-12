@@ -120,7 +120,7 @@ function viewAllEmployees() {
     const sql = 'Select emp.id as EmployeeID, concat(emp.first_name," ",emp.last_name ) as EmployeeName, ro.title as Role_Title, ro.salary as Salary, dept.name as Department_Name, concat(emp2.first_name," ",emp2.last_name) as ManagerName from tracker.employee as emp2 on emp2.id=emp.manager_id left join tracker.Role as ro on emp.role_id left join tracker.department as dep.id = ro.department_id';
     connection.query(
         sql,
-        (req, res) => {
+        (err, res) => {
             if (err) {
                 throw err;
             }
@@ -154,7 +154,7 @@ function addRoles() {
             return res[0].map(dept => {
                 return {
                     name: dept.name,
-                    value: dep.id
+                    value: dept.id
                 }
             })
         })
@@ -181,7 +181,7 @@ function addRoles() {
 
         .then(answer => {
             console.log(answer);
-            return connection.promise().query('INSERT INTO role SET?', { title: answer.roles, salary: answer.salary, department_id: answer.dep });
+            return connection.promise().query('INSERT INTO role SET?', { title: answer.roles, salary: answer.salary, dep_id: answer.dep });
         })
         .then(res => {
             console.log('New Role Added!');
@@ -349,6 +349,40 @@ function updateEmployeeManager() {
         console.log('Successfully Updated Manager!');
         createList();
     });
+}
+
+function deleteEmployee() {
+    connection.promise().query('SELECT * FROM employee')
+        .then((res) => {
+            // Create Employee Array
+            return res[0].map(emp => {
+                return {
+                    name: emp.first_name,
+                    value: emp.id
+                }
+            })
+        })
+        .then((employees) => {
+            return inquirer.prompt([
+                {
+                    type: 'list',
+                    name: 'idEmployee',
+                    choices: employees,
+                    message: 'Select the Employee you wish to Delete.'
+                }
+            ])
+        })
+        .then(answer => {
+            console.log(answer);
+            return connection.promise().query('DELETE FROM Employee WHERE id = ?', answer.idEmployee);
+        })
+        .then(res => {
+            console.log('Successfully Deleted Target Employee!');
+            createList();
+        })
+        .catch(err => {
+            throw err
+        });
 }
 
 function deleteDepartment() {
