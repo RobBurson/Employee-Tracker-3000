@@ -299,11 +299,55 @@ function updateEmployeeRole() {
     })
     .then(res => {
         console.log(res);
-        console.log('Successfully Updated Manager!');
+        console.log('Successfully Updated Employee!');
         createList();
     })
     .catch(err => {
         throw err
+    });
+}
+
+function updateEmployeeManager() {
+    connection.promise().query('SELECT * FROM employee')
+    .then((res) => {
+        // Department Array
+        return res[0].map(employee => {
+            return {
+                name: employee.first_name,
+                value: employee.id
+            }
+        })
+    })
+    .then(async (employeeList) => {
+        return inquirer.prompt([
+            {
+                type: 'list',
+                name: 'employeeListID',
+                choices: employeeList,
+                message: 'Select the Employee to whom you wish to assign a Manager:'
+            },
+            {
+                type: 'list',
+                name: 'managerID',
+                choices: await selectManager(),
+                message: 'Select the Employee to whom you wish to make a Manager.'
+            }
+        ])
+    })
+    .then(answer => {
+        console.log(answer);
+        return connection.promise().query('UPDATE employee SET manager_id = ? WHERE id =?',
+        
+        [
+            answer.managerID,
+            answer.employeeListID
+        ],
+        );
+    })
+    .then(res => {
+        console.log(res);
+        console.log('Successfully Updated Manager!');
+        createList();
     });
 }
 
@@ -341,3 +385,5 @@ function deleteDepartment() {
         throw err
     });
 }
+
+
