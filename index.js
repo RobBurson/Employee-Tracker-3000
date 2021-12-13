@@ -77,17 +77,14 @@ function createList() {
                     updateEmployeeManager();
                     break;
 
-                case "View Employee By Manager":
-                    viewEmployeeByManager();
-                    break;
+                // case "View Employee By Manager":
+                //     viewEmployeeByManager();
+                //     break;
 
                 case "Exit":
                     connection.end();
                     console.log('Have A Shiny Day!');
                     break;
-
-
-
             }
         })
 }
@@ -456,39 +453,39 @@ function deleteRole() {
         });
 }
 
-function viewEmployeeByManager() {
-    connection.promise().query('SELECT * FROM employee')
-    .then ((res) => {
-        // Create Array
-        return res[0].map(employee => {
-            return {
-                name: employee.firstName,
-                value: employee.id
-            }
-        })
-    })
-    .then (async (managerList) => {
-        return inquirer.prompt([
-            {
-                type: 'list',
-                name: 'idManager',
-                choices: managerList,
-                message: 'Select the Manager whose Employees you wish to view.'
-            }
-        ])
-    })
-    .then(answer => {
-        console.log(answer);
-        return connection.promise().query('SELECT * FROM employee WHERE manager_id = ?', answer.idManager);
-    })
-    .then(res => {
-        console.table(res[0]);
-        createList();
-    })
-    .catch(err => {
-        throw err
-    });
-}
+// function viewEmployeeByManager() {
+//     connection.promise().query('SELECT * FROM employee')
+//     .then ((res) => {
+//         // Create Array
+//         return res[0].map(employee => {
+//             return {
+//                 name: employee.firstName,
+//                 value: employee.id
+//             }
+//         })
+//     })
+//     .then (async (managerList) => {
+//         return inquirer.prompt([
+//             {
+//                 type: 'list',
+//                 name: 'idManager',
+//                 choices: managerList,
+//                 message: 'Select the Manager whose Employees you wish to view.'
+//             }
+//         ])
+//     })
+//     .then(answer => {
+//         console.log(answer);
+//         return connection.promise().query('SELECT * FROM employee WHERE manager_id = ?', answer.idManager);
+//     })
+//     .then(res => {
+//         console.table(res[0]);
+//         createList();
+//     })
+//     .catch(err => {
+//         throw err
+//     });
+// }
 
 createList();
 
