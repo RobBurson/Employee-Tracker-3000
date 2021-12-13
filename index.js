@@ -117,7 +117,8 @@ function viewAllRoles() {
 }
 
 function viewAllEmployees() {
-    const sql = 'Select emp.id as EmployeeID, concat(emp.first_name," ",emp.last_name ) as EmployeeName, ro.title as Role_Title, ro.salary as Salary, dept.name as Department_Name, concat(emp2.first_name," ",emp2.last_name) as ManagerName from tracker.employee as emp2 on emp2.id=emp.manager_id left join tracker.Role as ro on emp.role_id left join tracker.department as dep.id = ro.department_id';
+    // const sql = 'SELECT * FROM tracker.employee';
+    const sql = 'SELECT emp.id AS Employee_Id, CONCAT(emp.first_name," ",emp.last_name ) AS Employee_Name, ro.title AS Role_Title, ro.salary AS Salary, dep.name AS Department_Name, CONCAT(emp2.first_name," ",emp2.last_name) AS Manager_Name FROM tracker.employee AS emp LEFT JOIN tracker.employee AS emp2 ON emp.manager_id = emp2.id LEFT JOIN tracker.Role AS ro ON emp.role_id = ro.id LEFT JOIN tracker.department AS dep ON ro.dep_id = dep.id';
     connection.query(
         sql,
         (err, res) => {

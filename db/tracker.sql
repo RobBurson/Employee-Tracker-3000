@@ -5,11 +5,11 @@ USE tracker;
 
 CREATE TABLE Department (
     id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR (30) NOT NULL,
+    [name] VARCHAR (30) NOT NULL,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE Role (
+CREATE TABLE [Role] (
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR (30) NOT NULL,
     salary DECIMAL NOT NULL,
