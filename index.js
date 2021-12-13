@@ -28,7 +28,7 @@ function createList() {
                 'Delete Employee(s)',
                 'Update Employee Roles',
                 'Update Employee Manager',
-                'View Employee by Manager',
+                // 'View Employee by Manager',
                 'Exit'
             ]
         }).then(answer => {
