@@ -8,11 +8,10 @@
   - [Video Link](#video-link)
   - [User Story](#user-story)
   - [Acceptance Criteria](#acceptance-criteria)
-  - [Demonstration Video (GIF)](#demonstration-video-gif)
 
 ## Description
 
-This is a CLI app to view the information stored in a database. Often referred to as a CMS or **C**ontent **M**anagement **S**ystem, this application is a tenable solution for managing a companies employees and is made using Node.js, Inquirer and MySQL.
+This is a CLI app to view the information stored in a database. Often referred to as a CMS or **C**ontent **M**anagement **S**ystem, this application is a tenable solution for managing a companies employees and is made using Node.js, Inquirer and MySQL. Clone the Repo, run npm install, install Inquirer and MySQL2 then run node index.js! Enjoy!
 
 ## Repo Link
 
@@ -20,6 +19,7 @@ https://github.com/RobBurson/Employee-Tracker-3000
 
 ## Video Link
 
+https://drive.google.com/file/d/1Uxk79XoTPhRumize__G2A24Q2T-6jvvG/view
 ## User Story
 
 `` AS A business owner
@@ -45,5 +45,3 @@ SO THAT I can organize and plan my business ``
 * THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
 * WHEN I choose to update an employee role
 * THEN I am prompted to select an employee to update and their new role and this information is updated in the database
-
-## Demonstration Video (GIF)
